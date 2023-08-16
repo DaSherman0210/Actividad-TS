@@ -50,18 +50,29 @@ const arrayCamper = [];
 
 const camper1 = new Camper(0,"frontend react",18,34343324,"casa 1",true,313232913,"presencial","centro 1");
 const camper2 = new Camper(1,"backend node",28,34343324,"casa 2",false,43254353543,"remoto","centro 2");
-const camper3 = new Camper(2,"backend flutter",30,34343324,"casa 3",true,313324332232913,"presencial","centro 2");
-const camper4 = new Camper(3,"backend ruby",17,34343324,"casa 4",true,313232932413,"presencial","centro 1");
-const camper5 = new Camper(4,"frontend view",24,34343324,"casa 5",false,313232324913,"remoto","centro 2");
-const camper6 = new Camper(5,"backend Goo",27,34343324,"casa 6",false,313232432913,"presencial","centro 1");
-const camper7 = new Camper(6,"backend java",22,34343324,"casa 7",true,313223432913,"presencial","centro 2");
+const camper3 = new Camper(2,"backend flutter",30,34343324,"casa 3",true,313324332232913,"presencial","centro 5");
+const camper4 = new Camper(3,"backend ruby",17,34343324,"casa 4",true,313232932413,"presencial","centro 5");
+const camper5 = new Camper(4,"frontend view",24,34343324,"casa 5",false,313232324913,"remoto","centro 6");
+const camper6 = new Camper(5,"backend Goo",27,34343324,"casa 6",false,313232432913,"presencial","centro 6");
+const camper7 = new Camper(6,"backend java",22,34343324,"casa 7",true,313223432913,"presencial","centro 6");
 
 arrayCamper.push(camper1,camper2,camper3,camper4,camper5,camper6,camper7);
 
 let centroM = 0;
 let centrom = 99999999999999;
+
+//todo -- Centros de entrenamiento Campus
+
 const centroCampus1 = [];
 const centroCampus2 = [];
+const centroCampus3 = [];
+const centroCampus4 = [];
+const centroCampus5 = [];
+const centroCampus6 = [];
+const centroCampus7 = [];
+
+//todo -- Demas arrays
+
 const terminadosRuta = [];
 const contratoRemoto = [];
 const contratoPresencial = [];
@@ -79,22 +90,54 @@ for (let i = 0; i < arrayCamper.length; i++) {
         terminadosRuta.push(arrayCamper[i]);
     }
 
+    //? Validacion del tipo de centro
+
     if (arrayCamper[i].centroEntrenamiento === "centro 1") {
         centroCampus1.push(arrayCamper[i]);
     }else if (arrayCamper[i].centroEntrenamiento === "centro 2"){
         centroCampus2.push(arrayCamper[i]);
+    }else if (arrayCamper[i].centroEntrenamiento === "centro 3"){
+        centroCampus3.push(arrayCamper[i]);
+    }else if (arrayCamper[i].centroEntrenamiento === "centro 4"){
+        centroCampus4.push(arrayCamper[i]);
+    }else if (arrayCamper[i].centroEntrenamiento === "centro 5"){
+        centroCampus5.push(arrayCamper[i]);
+    }else if (arrayCamper[i].centroEntrenamiento === "centro 6"){
+        centroCampus6.push(arrayCamper[i]);
+    }else if (arrayCamper[i].centroEntrenamiento === "centro 7"){
+        centroCampus7.push(arrayCamper[i]);
     }
 }
 
-if (centroCampus1.length > centroCampus2.length) {
-    console.log("CENTRO 1");
-    centroM = centroCampus1.length;
-    console.log("CENTRO 2");
-    centrom = centroCampus2.length;
-}else{
-    centroM = centroCampus2.length;
-    centrom = centroCampus1.length;
+//todo -- Sacar la cantidad de campers que hay en cada centro
+
+const longitudes = [
+    centroCampus1.length,
+    centroCampus2.length,
+    centroCampus3.length,
+    centroCampus4.length,
+    centroCampus5.length,
+    centroCampus6.length,
+    centroCampus7.length
+];
+
+let maxIndex = 0;
+let minIndex = 0;
+let maxLength = longitudes[0];
+let minLength = longitudes[0];
+
+for (let i = 1; i < longitudes.length; i++) {
+  if (longitudes[i] > maxLength) {
+    maxIndex = i;
+    maxLength = longitudes[i];
+  }
+  if (longitudes[i] < minLength) {
+    minIndex = i;
+    minLength = longitudes[i];
+  }
 }
+
+//todo -- Loguear a consola
 
 console.log("--------------------------------REMOTO--------------------------------");
 console.log(contratoRemoto);
@@ -103,8 +146,9 @@ console.log(contratoPresencial);
 console.log("--------------------------------DISPONIBLES--------------------------------");
 console.log(terminadosRuta);
 console.log("--------------------------------CENTRO MAYOR--------------------------------");
-console.log(centroCampus1.length);
+console.log(maxIndex);
 console.log("--------------------------------CENTRO MENOR--------------------------------");
+console.log(minIndex);
 
 
 
